@@ -7,6 +7,8 @@ Desde la gerencia de Infraestructura no están muy convencidos de utilizar esta 
 Esta practica fue desarrollado en una máquna virtual en VirtualBox con un Servidor Ubuntu ya prediseñado, en el cual ya viene instalado Docker.
 Las herramientas que utilice en esta practica son VirtualBox, Putty, WinSCP. 
 
+Nota: Este trabajo esta subido en una version de prueba, las mejoras estan en proceso de hacerse 
+
 # Entorno Docker con Hadoop, Spark y Hive
 Se pesenta un entorno Docker con Hadoop (HDFS) y la implementación de:
 
@@ -24,7 +26,7 @@ Es importante mencionar que el entorno completo consume muchos recursos de su eq
 
 Deberiamos ejecutar el siguiente comando para clonar el repositorio que vamos a utilizar:
 
-	git clone https://github.com/javyleonhart/Practica_integradora_herramientasBigData.git
+	git clone https://github.com/facu-corvalan/Herramientas_Big_Data.git
 
 Una vez descargadas las herramientas que utilizaremos, 
 entraremos a la carpeta con el comando "cd"
