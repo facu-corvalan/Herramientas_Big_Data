@@ -125,8 +125,25 @@ Ahora tendremos que ingresar al entonrno hive con el siguiente comando:
 
 Nota: Saber que dentro de hive solo acepta Querys entonces a la hora de hacer un comando sin ";" el mismo servidor te manda a la siguiente linea porque espera que vos termines de escribir un comando.
 
-Para salir de hive tendremos que pone "exit;"
+Nota_2: Al estar dentro de hive deberemos poner en que base de datos queremos trabajar con el uso de "use <NombredeDB>;" y para salir de hive tendremos que pone "exit;"
 
 ## 3) Formato de Almacenamiento
 
 Trabajaremos con las tablas creadas en el punto 2, los archivos en formatos tipo csv los almacenaremos en formato Parquer con una compresion de tipo Snappy.
+Tener en cuenta que en esta actividad vamos a trabajar creando una base de datos en base a la base de datos creada en el punto 2, ademas vamos a generar particiones en ciertas tablas.
+
+Como pueden notar en el material existe un archivo hql que es Paso03.hql en el cual esta almacenado un query que crea una base de datos llamada integrador 2. Esta DB modifica la informacion y la guarda en formato Parquet con una compresion de tipo Snappy.
+
+Ahora para comenzar con la actividad tendremos que subir el archivo hql al contenedor de hive con el siguiente codigo:
+
+    sudo docker cp ./Paso03.hql hive-server:/opt/
+
+Una vez hecho este paso, podemos darnos cuenta que el proceso es igual al anterior para activar el hql y para revisar si funciono:
+
+	sudo docker exec -it hive-server bash
+	hive -f Paso03.hql
+    hive
+
+Importante leer el scrip hql para entender por completo el proceso porque en el mismo archivo te genera una carpeta llamada "data2" la cual estaran almacenadas las tablas y dentro de las tablas estaran los archivos con el formato parquet y compresion de tipo snappy.
+
+Podriamos fijarnos si funciono entrando nuevamente a la pagina de hadoop como hemos visto anteriormente "<IP_Anfitrion>:9870", dentro de este podremos ver una carpeta llamada data2.
