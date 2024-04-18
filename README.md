@@ -9,7 +9,7 @@ Las herramientas que utilice en esta practica son VirtualBox, Putty, WinSCP.
 
 Nota: Este trabajo esta subido en una version de prueba, las mejoras estan en proceso de hacerse 
 
-![](imagenes/Docker.png)
+![](imagenes/big-data.png)
 
 # Entorno Docker con Hadoop, Spark y Hive
 Se pesenta un entorno Docker con Hadoop (HDFS) y la implementación de:
