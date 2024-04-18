@@ -89,23 +89,25 @@ Copiar los archivos csv provistos a HDFS:
 
 En este proceso creamos una carpeta llamada data y copiando de los archivos.
 
+![](imagenes/data_imagen.png)
+
 Para verificando si se ejecuto correctamente podemos entrar al hdfs namenode mediante 
 
     http://<IP_Anfitrion>:9870
 
 Nota: Debemos cambiar la parte de "<IP_Anfitrion>" por la ip de la maquina virtual.
-
+![](imagenes/Hadoop_1.png)  ![](imagenes/Hadoop_2.png)  ![](imagenes/Hadoop_3.png)  
 ## 2) Hive
 
 Para esta actividad deberiamos utilizar el entorno docker-compose-v2.yml
 
 	sudo docker-compose -f docker-compose-v2.yml up -d
 
-Con el comando anterior creamos un entorno con Hive 
+Con el comando anterior iniciamos un entorno con Hive 
 
 Crearemos tablas en Hive, a partir de los csv ingestados en HDFS.
 
-Para esto, tendriamos que ubicarnos dentro del contenedor Hive y ejecutar desde allí los scrips necesarios.
+Para esto, tendriamos que ubicarnos dentro del contenedor Hive y ejecutar desde allí los scripts necesarios.
 
 Antes que nada tendremos que pasar el archivo Paso02.hql al servidor de hive con el siguiente comando:
 
@@ -124,6 +126,8 @@ Ahora tendremos que ingresar al entonrno hive con el siguiente comando:
     hive
 
 Nota: Saber que dentro de hive solo acepta Querys entonces a la hora de hacer un comando sin ";" el mismo servidor te manda a la siguiente linea porque espera que vos termines de escribir un comando.
+
+![](imagenes/Hive_0.png)
 
 Nota_2: Al estar dentro de hive deberemos poner en que base de datos queremos trabajar con el uso de "use <NombredeDB>;" y para salir de hive tendremos que pone "exit;"
 
@@ -147,3 +151,5 @@ Una vez hecho este paso, podemos darnos cuenta que el proceso es igual al anteri
 Importante leer el scrip hql para entender por completo el proceso porque en el mismo archivo te genera una carpeta llamada "data2" la cual estaran almacenadas las tablas y dentro de las tablas estaran los archivos con el formato parquet y compresion de tipo snappy.
 
 Podriamos fijarnos si funciono entrando nuevamente a la pagina de hadoop como hemos visto anteriormente "<IP_Anfitrion>:9870", dentro de este podremos ver una carpeta llamada data2.
+
+ 
