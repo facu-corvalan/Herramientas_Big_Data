@@ -47,11 +47,11 @@ Se debe utilizar el entorno docker-compose-v1.yml
 
     sudo docker-compose -f docker-compose-v1.yml up -d
 
-Una vez inicializado el contenedor, entraremos al namenode
+Una vez iniciado el contenedor, entraremos al namenode
 
     sudo docker exec -it namenode bash
 
-Nos debemos posicionar en "home" y crearemos el directorio Datasets con el comando mkdir
+Nos debemos posicionar en la carpeta "home" y crearemos un directorio llamado Datasets con el comando mkdir
 
     cd home
     mkdir Datasets
@@ -75,11 +75,11 @@ luego ejecutarlo
 
     ./Paso00.sh
 
-Ubicarse en el contenedor "namenode"
+Ahora ubicarse en el contenedor "namenode"
 
     sudo docker exec -it namenode bash
 
-Crear un directorio en HDFS llamado "dato"
+Para crear un directorio en HDFS llamado "dato"
 
     hdfs dfs -mkdir -p data
 
@@ -87,7 +87,7 @@ Copiar los archivos csv provistos a HDFS:
 
     hdfs dfs -put /home/Datasets/* data
 
-En este proceso creamos una carpeta llamada data y copiando de los archivos.
+En este proceso creamos una carpeta llamada data y la poblaremos con los archivos CSV.
 
 ![](imagenes/data.png)
 
@@ -97,6 +97,7 @@ Para verificando si se ejecuto correctamente podemos entrar al hdfs namenode med
 
 Nota: Debemos cambiar la parte de "<IP_Anfitrion>" por la ip de la maquina virtual.
 ![](imagenes/Hadoop_1.png)  ![](imagenes/Hadoop_2.png)  ![](imagenes/Hadoop_3.png)  
+
 ## 2) Hive
 
 Para esta actividad deberiamos utilizar el entorno docker-compose-v2.yml
@@ -106,8 +107,6 @@ Para esta actividad deberiamos utilizar el entorno docker-compose-v2.yml
 Con el comando anterior iniciamos un entorno con Hive 
 
 Crearemos tablas en Hive, a partir de los csv ingestados en HDFS.
-
-Para esto, tendriamos que ubicarnos dentro del contenedor Hive y ejecutar desde allí los scripts necesarios.
 
 Antes que nada tendremos que pasar el archivo Paso02.hql al servidor de hive con el siguiente comando:
 
@@ -121,20 +120,19 @@ Una vez dentro tendremos que ejecutar el archivo hql de la siguiente manera:
 
 	hive -f Paso02.hql
 
-Ahora tendremos que ingresar al entonrno hive con el siguiente comando:
+Ahora ingresamos al entonrno hive con el siguiente comando:
 
     hive
 
-Nota: Saber que dentro de hive solo acepta Querys entonces a la hora de hacer un comando sin ";" el mismo servidor te manda a la siguiente linea porque espera que vos termines de escribir un comando.
+Nota: Saber que dentro de hive solo acepta Querys entonces a la hora de hacer un comando sin ";" el mismo contenedor te manda a la siguiente linea de comando.
 
 ![](imagenes/Hive_0.png)
 
-Nota_2: Al estar dentro de hive deberemos poner en que base de datos queremos trabajar con el uso de "use <NombredeDB>;" y para salir de hive tendremos que pone "exit;"
 
 ## 3) Formato de Almacenamiento
 
-Trabajaremos con las tablas creadas en el punto 2, los archivos en formatos tipo csv los almacenaremos en formato Parquer con una compresion de tipo Snappy.
-Tener en cuenta que en esta actividad vamos a trabajar creando una base de datos en base a la base de datos creada en el punto 2, ademas vamos a generar particiones en ciertas tablas.
+Trabajaremos con las tablas creadas en el punto 2, los archivos en formatos tipo csv los almacenaremos en formato Parquet con una compresion de tipo Snappy.
+Tener en cuenta que en esta actividad vamos a trabajar creando una base de datos a partir de la base de datos creada en el punto 2, ademas vamos a generar particiones en ciertas tablas.
 
 Como pueden notar en el material existe un archivo hql que es Paso03.hql en el cual esta almacenado un query que crea una base de datos llamada integrador 2. Esta DB modifica la informacion y la guarda en formato Parquet con una compresion de tipo Snappy.
 
