@@ -89,7 +89,7 @@ Copiar los archivos csv provistos a HDFS:
 
 En este proceso creamos una carpeta llamada data y copiando de los archivos.
 
-![](imagenes/data_imagen.png)
+![](imagenes/data.png)
 
 Para verificando si se ejecuto correctamente podemos entrar al hdfs namenode mediante 
 
