@@ -150,4 +150,41 @@ Importante leer el scrip hql para entender por completo el proceso porque en el 
 
 Podriamos fijarnos si funciono entrando nuevamente a la pagina de hadoop como hemos visto anteriormente "<IP_Anfitrion>:9870", dentro de este podremos ver una carpeta llamada data2.
 
- 
+ ## 4) SQL
+
+ La mejora en la velocidad de consulta que puede proporcionar un índice tiene el costo del procesamiento adicional para crear el índice y el espacio en disco para almacenar las referencias del índice. Se recomienda que los índices se basen en las columnas que utiliza en las condiciones de filtrado. El índice en la tabla puede degradar su rendimiento en caso de que no los esté utilizando. Crear índices en alguna de las tablas cargadas y probar los resultados:
+
+    CREATE INDEX index_name
+     ON TABLE base_table_name (col_name, ...)
+     AS index_type
+     [WITH DEFERRED REBUILD]
+     [IDXPROPERTIES (property_name=property_value, ...)]
+     [IN TABLE index_table_name]
+     [ [ ROW FORMAT ...] STORED AS ...
+     | STORED BY ... ]
+     [LOCATION hdfs_path]
+     [TBLPROPERTIES (...)]
+     [COMMENT "index comment"];
+
+Para realizar alguna modificación sobre su indice utilice:
+
+    ALTER INDEX index_name ON table_name [PARTITION partition_spec] REBUILD;
+
+Ejemplo
+
+    ALTER INDEX index_students ON students REBUILD;
+
+Para borrar el indice 
+
+    DROP INDEX [IF EXISTS] index_name ON table_name;
+
+
+## 5) No-SQL
+
+En ste ejercicio usamos el docker-compose-v3.yml 
+
+    sudo docker-compose -f docker-compose-v3.yml up -d
+
+1) HBase:
+
+Instrucciones:
